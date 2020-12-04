@@ -30,7 +30,7 @@ public class Material {
 
     private String matName;//材料名
     private Integer matStock;//材料库存
-    private Integer leimuType;//材料类目编号
+    private String leimuType;//材料类目
     private Integer adminId;//材料属于那个商家
 
     @CreatedDate//自动添加创建时间的注解
