@@ -3,12 +3,12 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 72px">
     <div class="container">
 
         <div class="text-left collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active"> <a class="nav-link" href="#">统计信息</a> </li>
+                <li class="nav-item active"> <a class="nav-link" href="#"> 统计信息</a> </li>
                 <li class="nav-item dropdown">
                 </li>
             </ul>

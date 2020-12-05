@@ -2,13 +2,13 @@
 <#include "../zujian/top.ftlh">
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 72px">
     <div class="container">
 
         <div class="text-left collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active"> <a class="nav-link" href="#">餐厅订单管理</a> </li>
-                <li class="nav-item"> <a class="nav-link" href="/diancan/picture/list">导出订单到Excel</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="/diancan/adimOrder/export">导出订单到Excel</a> </li>
                 <li class="nav-item dropdown">
                 </li>
             </ul>
@@ -23,23 +23,23 @@
 <#--    <h4 class="bg-info text-white p-1  text-center">餐厅订单管理</h4>-->
     <#--左边栏-->
     <#include "../zujian/left.ftlh">
-    <div id="page-content-wrapper" class="container-fluid row clearfix">
+    <div id="page-content-wrapper" class="container-fluid row clearfix" style="position: absolute; left: 280px;top: 100px ; width: 1420px">
         <#--批量导出菜品订单-->
 <#--        <button class="btn btn-info text-white m-3" onclick="window.parent.location.href='/diancan/adimOrder/export';">-->
 <#--            导出订单到excel-->
 <#--        </button>-->
         <#--订单表格-->
-        <div class="col-md-12 column">
+        <div class="col-md-12 column" >
             <table class="table table- table-striped table-bordered table-sm ">
                 <thead>
                 <tr class="table-info">
                     <th>订单id</th>
-                    <th>用户姓名</th>
+                    <th width="120px">用户姓名</th>
                     <th>手机号/微信</th>
                     <th>桌号</th>
                     <th>订单金额</th>
                     <th>订单状态</th>
-                    <th>被催单次数</th>
+                    <th>催单次数</th>
                     <th>创建时间</th>
                     <th colspan="2">操作</th>
                 </tr>

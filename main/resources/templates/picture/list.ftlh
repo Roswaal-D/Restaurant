@@ -3,7 +3,7 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 72px">
     <div class="container">
 
         <div class="text-left collapse navbar-collapse " id="navbarSupportedContent">
@@ -41,7 +41,7 @@
                         <th>图片id</th>
                         <th>图片描述</th>
                         <th>图片</th>
-                        <th>图片url</th>
+                        <th width="450px">图片url</th>
                         <th>创建时间</th>
                         <th colspan="2">操作</th>
                     </tr>
@@ -53,7 +53,7 @@
                             <td>${category.picId}</td>
                             <td>${category.picMessage}</td>
                             <td><img height="50" width="50" src="${category.picUrl}" alt=""></td>
-                            <td>${category.picUrl}</td>
+                            <td><a href="${category.picUrl}">${category.picUrl}</a> </td>
                             <td>${category.createTime}</td>
                             <td><a href="/diancan/picture/index?picId=${category.picId}">修改</a></td>
                             <td><a href="/diancan/picture/remove?picId=${category.picId}">删除</a></td>

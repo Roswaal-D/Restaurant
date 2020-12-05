@@ -10,7 +10,7 @@
 <#--</head>-->
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 72px">
     <div class="container">
 
         <div class="text-left collapse navbar-collapse " id="navbarSupportedContent">
@@ -31,8 +31,8 @@
 <div id="wrapper" class="toggled">
     <#--左边栏-->
     <#include "../zujian/left.ftlh">
-    <div class="row clearfix">
-        <div class="col-md-12 column">
+    <div class="row clearfix" style="position: absolute; left: 300px ;top: 100px ;width: 1360px">
+        <div class="col-md-12 column" >
             <table class="table table-striped table-bordered table-sm">
                 <thead>
                 <tr class="table-info">

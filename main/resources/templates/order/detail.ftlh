@@ -2,9 +2,26 @@
 <#include "../zujian/top.ftlh">
 
 <body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 72px">
+    <div class="container">
+
+        <div class="text-left collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active"> <a class="nav-link" href="#">菜品订单详情页</a> </li>
+<#--                <li class="nav-item"> <a class="nav-link" href="/diancan/picture/list">导出订单到Excel</a> </li>-->
+                <li class="nav-item dropdown">
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+</br>
+</br>
+
 <div id="wrapper" class="toggled">
     <#--内容区域头部样式-->
-    <h2 class="bg-info text-white p-3  text-center">菜品订单详情页</h2>
+<#--    <h2 class="bg-info text-white p-3  text-center">菜品订单详情页</h2>-->
     <#--左边栏-->
     <#include "../zujian/left.ftlh">
     <#--主要内容content-->

@@ -3,7 +3,7 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 72px">
     <div class="container">
 
         <div class="text-left collapse navbar-collapse " id="navbarSupportedContent">
@@ -41,21 +41,22 @@
 <#--        <button class="btn btn-info text-white my-3" onclick="window.parent.location.href='/diancan/food/export';">-->
 <#--            导出菜品到excel-->
 <#--        </button>-->
-        <div class="row clearfix">
+        <div class="row clearfix" style="position: absolute; left: 300px ;top: 100px " >
             <div class="col-md-12 column">
                 <table class="table  table-striped table-bordered table-sm">
+<#--                <table class="table table-bordered ">-->
                     <thead>
                     <tr class="table-info">
-                        <th>菜品id</th>
-                        <th>菜品名</th>
-                        <th>单价</th>
-                        <th>库存</th>
-                        <th>菜品描述</th>
-                        <th>类目</th>
-                        <th>图片</th>
-                        <th>创建时间</th>
-                        <th>修改时间</th>
-                        <th colspan="3">操作</th>
+                        <th width="50px">菜品id</th>
+                        <th width="60px">菜品名</th>
+                        <th width="50px">单价</th>
+                        <th width="50px">库存</th>
+                        <th width="100px">菜品描述</th>
+                        <th width="50px">类目</th>
+                        <th width="70px">图片</th>
+                        <th width="170px">创建时间</th>
+                        <th width="170px">修改时间</th>
+                        <th colspan="3" width="150px">操作</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -71,16 +72,16 @@
                             <td><img height="50" width="50" src="${food.foodIcon}" alt=""></td>
                             <td>${food.createTime!''}</td>
                             <td>${food.updateTime!''}</td>
-                            <td><a href="/diancan/food/index?foodId=${food.foodId}">修改</a>
+                            <td width="50px"><a href="/diancan/food/index?foodId=${food.foodId}">修改</a>
                             </td>
-                            <td>
+                            <td width="50px">
                                 <#if (food.getFoodStatus() ==0)>
                                     <a href="/diancan/food/off_sale?foodId=${food.foodId}">下架</a>
                                 <#else>
                                     <a href="/diancan/food/on_sale?foodId=${food.foodId}">上架</a>
                                 </#if>
                             </td>
-                            <td><a href="/diancan/food/remove?foodId=${food.foodId}">删除</a>
+                            <td width="50px"><a href="/diancan/food/remove?foodId=${food.foodId}">删除</a>
                             </td>
                         </tr>
                     </#list>

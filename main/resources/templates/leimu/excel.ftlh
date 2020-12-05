@@ -2,7 +2,7 @@
 <#include "../zujian/top.ftlh">
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 72px">
     <div class="container">
 
         <div class="text-left collapse navbar-collapse " id="navbarSupportedContent">
@@ -38,7 +38,7 @@
                 <h1>注意事项</h1>
                 <p>1，文件必须是excel</p>
                 <p>2，excel内容的列必须和下图一一对应，下图仅供参考</p>
-                <img class="img-responsive img-xs" src="/diancan/img/leimu.png"/>
+                <img class="img-responsive img-xs" src="/diancan/img/foodtype.png"/>
             </div>
         </div>
     </div>
