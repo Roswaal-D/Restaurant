@@ -1,11 +1,15 @@
 package com.qcl.controller;
 
 import com.qcl.bean.Food;
+import com.qcl.bean.FoodMenu;
 import com.qcl.bean.Leimu;
+import com.qcl.bean.Material;
 import com.qcl.meiju.FoodStatusEnum;
 import com.qcl.meiju.ResultEnum;
+import com.qcl.repository.FoodMenuRepository;
 import com.qcl.repository.FoodRepository;
 import com.qcl.repository.LeiMuRepository;
+import com.qcl.repository.MaterialRepository;
 import com.qcl.request.FoodReq;
 import com.qcl.utils.ExcelExportUtils;
 import com.qcl.utils.ExcelImportUtils;
@@ -42,11 +46,40 @@ public class AdminFoodController {
     @Autowired
     private LeiMuRepository leiMuRepository;
 
+    @Autowired
+    private MaterialRepository materialRepository;
+    @Autowired
+    private FoodMenuRepository foodMenuRepository;
+
+
+    @GetMapping("/init")
+    public String init(@RequestParam(value = "nextUrl",defaultValue = "/diancan/home/homeList") String nurl,
+            ModelMap map){
+        List<Food> foodList1 =foodRepository.findAll();
+        for(Food food : foodList1){
+            int min=1000000000;
+            List<FoodMenu> foodMenus=foodMenuRepository.findByFoodId(food.getFoodId());
+            for(FoodMenu foodMenu : foodMenus){
+                Material material=materialRepository.findByMatId(foodMenu.getMatId());
+                int tem=material.getMatStock()/foodMenu.getMatCost();
+                if(min>tem){
+                    min=tem;
+                }
+            }
+            if(min==1000000000) min=0;
+            food.setFoodStock(min);
+            foodRepository.save(food);
+        }
+        map.put("url",nurl);
+        return "zujian/reflash";
+    }
+
     //列表
     @GetMapping("/list")
     public String list(@RequestParam(value = "page", defaultValue = "1") Integer page,
                        @RequestParam(value = "size", defaultValue = "10") Integer size,
                        ModelMap map) {
+
         PageRequest request = PageRequest.of(page - 1, size);
         Page<Food> foodPage = foodRepository.findAll(request);
         map.put("foodPage", foodPage);

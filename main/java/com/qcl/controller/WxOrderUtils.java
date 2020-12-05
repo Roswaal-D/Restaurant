@@ -1,13 +1,9 @@
 package com.qcl.controller;
 
-import com.qcl.bean.Food;
-import com.qcl.bean.WxOrderDetail;
-import com.qcl.bean.WxOrderRoot;
+import com.qcl.bean.*;
 import com.qcl.meiju.OrderStatusEnum;
 import com.qcl.meiju.ResultEnum;
-import com.qcl.repository.FoodRepository;
-import com.qcl.repository.OrderDetailRepository;
-import com.qcl.repository.OrderRootRepository;
+import com.qcl.repository.*;
 import com.qcl.response.WxCardResponse;
 import com.qcl.response.WxOrderResponse;
 import com.qcl.utils.EnumUtil;
@@ -49,6 +45,12 @@ public class WxOrderUtils {
     @Autowired
     private OrderRootRepository orderRootRepository;
 
+    @Autowired
+    private FoodMenuRepository foodMenuRepository;
+
+    @Autowired
+    private MaterialRepository materialRepository;
+
 
     //创建订单的方法
     public WxOrderResponse createOrder(WxOrderResponse orderBean) {
@@ -86,7 +88,20 @@ public class WxOrderUtils {
         ).collect(Collectors.toList());
 
         for (WxCardResponse cartDTO : cartDTOList) {
+            List<FoodMenu> foodMenus = foodMenuRepository.findByFoodId(cartDTO.getProductId());
             Food food = foodRepository.findById(cartDTO.getProductId()).orElse(null);
+            for(FoodMenu foodMenu : foodMenus){
+                Material material=materialRepository.findByMatId(foodMenu.getMatId());
+                if(material==null){
+                    throw new DianCanException(ResultEnum.PRODUCT_NOT_EXIST);
+                }
+                int result=material.getMatStock()-foodMenu.getMatCost()*cartDTO.getProductQuantity();
+                if(result<0){
+                    throw new DianCanException(ResultEnum.PRODUCT_STOCK_ERROR);
+                }
+                material.setMatStock(result);
+                materialRepository.save(material);
+            }
             if (food == null) {
                 throw new DianCanException(ResultEnum.PRODUCT_NOT_EXIST);
             }

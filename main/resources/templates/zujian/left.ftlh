@@ -47,10 +47,11 @@
         <li><a href="/diancan/admin/list">餐厅管理员</a></li>
         <li><a href="/diancan/picture/list">轮播图管理</a></li>
         <li><a href="/diancan/leimu/list">菜品类目管理</a></li>
-        <li><a href="/diancan/food/list">菜品管理</a></li>
+        <li><a href="/diancan/food/init?nextUrl=/diancan/food/list">菜品管理</a></li>
         <li><a href="/diancan/material/list">食材管理</a> </li>
         <li><a href="/diancan/adimOrder/list">菜品订单</a></li>
-        <!--<li><a href="/diancan/adminPaihao/list">排号管理</a></li>-->
+        <li><a href="/diancan/foodMenu/excel">菜谱管理</a></li>
+<#--        <li><a href="/diancan/adminPaihao/list">排号管理</a></li>-->
         <li><a href="/diancan/logoutAdmin">退出登陆</a></li>
 
     </ul>

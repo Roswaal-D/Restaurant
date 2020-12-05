@@ -2,10 +2,12 @@ package com.qcl.controller;
 
 import com.qcl.api.ResultVO;
 import com.qcl.bean.Food;
+import com.qcl.bean.Material;
 import com.qcl.bean.TotalMoney;
 import com.qcl.bean.WxOrderRoot;
 import com.qcl.meiju.OrderStatusEnum;
 import com.qcl.repository.FoodRepository;
+import com.qcl.repository.MaterialRepository;
 import com.qcl.repository.OrderRootRepository;
 import com.qcl.utils.ApiUtil;
 import com.qcl.utils.TimeUtils;
@@ -44,6 +46,8 @@ public class AdminHomeController {
     OrderRootRepository orderRootRepository;
     @Autowired
     FoodRepository foodRepository;
+    @Autowired
+    MaterialRepository materialRepository;
 
     /*
      * 页面相关
@@ -64,7 +68,7 @@ public class AdminHomeController {
         }
         map.put("totalMoneyList", totalMoneyList);
         map.put("yearMoney", getYearMoney(year));
-        map.put("foodList", getFoodKuCunList());
+        map.put("matList", getMaterialKuCunList());
         return "home/list";
     }
 
@@ -128,8 +132,10 @@ public class AdminHomeController {
         return totalMoney;
     }
 
-    //查询库存少于5的菜品，提醒管理员及时补充库存
-    private List<Food> getFoodKuCunList() {
-        return foodRepository.findByFoodStockLessThan(5);
+    //查询库存少于10的食材，提醒管理员及时补充库存
+    private List<Material> getMaterialKuCunList() {
+        return materialRepository.findByMatStockLessThan(10);
     }
+
+
 }

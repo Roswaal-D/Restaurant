@@ -58,15 +58,15 @@
                         <th colspan="2">需要补货的食材</th>
                     </tr>
                     <tr class="table-info">
-                        <th>菜品名</th>
+                        <th>食材名</th>
                         <th>库存</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <#list foodList as food>
+                    <#list matList as mat>
                         <tr>
-                            <td>${food.foodName!''}</td>
-                            <td>${food.foodStock!''}</td>
+                            <td>${mat.matName!''}</td>
+                            <td>${mat.matStock!''}</td>
                         </tr>
                     </#list>
                     </tbody>

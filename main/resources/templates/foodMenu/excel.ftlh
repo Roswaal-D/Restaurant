@@ -7,10 +7,7 @@
 
         <div class="text-left collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active"> <a class="nav-link" href="#">批量导入食材</a> </li>
-                <li class="nav-item"> <a class="nav-link" href="/diancan/material/list">查看所有食材</a> </li>
-                <li class="nav-item"> <a class="nav-link" href="/diancan/material/index">添加单个食材</a> </li>
-<#--                <li class="nav-item"> <a class="nav-link" href="/diancan/food/export">导出菜品到Excel</a> </li>-->
+                <li class="nav-item active"> <a class="nav-link" href="#">批量导入食谱</a> </li>
                 <li class="nav-item dropdown">
                 </li>
             </ul>
@@ -29,7 +26,7 @@
     <div class="container-fluid">
         <div class="row clearfix">
             <div class="col-md-8 offset-1 column">
-                <form action="/diancan/material/uploadExcel" method="post"
+                <form action="/diancan/foodMenu/uploadExcel" method="post"
                       enctype="multipart/form-data">
                     <input class="form-control-lg mt-5 mb-2" type="file" name="file">
                     <p><input class="btn-lg btn-success " type="submit" value="提交"></p>

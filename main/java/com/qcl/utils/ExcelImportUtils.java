@@ -1,7 +1,9 @@
 package com.qcl.utils;
 
+import com.qcl.bean.FoodMenu;
 import com.qcl.bean.Leimu;
 import com.qcl.bean.Food;
+import com.qcl.bean.Material;
 import com.qcl.global.GlobalData;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -131,6 +133,98 @@ public class ExcelImportUtils {
                             goodInfo.setFoodDesc(data);
                         } else if (j == 5) {
                             goodInfo.setFoodIcon(data);
+                        }
+                    }
+                }
+                list.add(goodInfo);
+            }
+        } catch (Exception e) {
+            log.error("excel导入抛出的错误={}", e);
+        }
+        return list;
+    }
+
+    public static List<Material> excelToMatInfoList(InputStream inputStream) {
+        List<Material> list = new ArrayList<>();
+        Workbook workbook = null;
+        try {
+            workbook = WorkbookFactory.create(inputStream);
+            inputStream.close();
+            //工作表对象
+            Sheet sheet = workbook.getSheetAt(0);
+            //总行数
+            int rowLength = sheet.getLastRowNum();
+            //工作表的列
+            Row row = sheet.getRow(0);
+            //总列数
+            int colLength = row.getLastCellNum();
+            //得到指定的单元格
+            Cell cell = row.getCell(0);
+            for (int i = 1; i <= rowLength; i++) {
+                Material goodInfo = new Material();
+                row = sheet.getRow(i);
+                for (int j = 0; j < colLength; j++) {
+                    cell = row.getCell(j);
+                    if (cell != null) {
+                        cell.setCellType(Cell.CELL_TYPE_STRING);
+                        String data = cell.getStringCellValue();
+                        data = data.trim();
+                        //列： 0食材名，1库存，2类目
+                        if (j == 0) {
+                            goodInfo.setAdminId(GlobalData.ADMIN_ID);//属于那个商家
+                            goodInfo.setMatName(data);
+                        } else if (j == 1) {
+                            goodInfo.setMatStock(Integer.parseInt(data));
+                        } else if (j == 2) {
+                            goodInfo.setLeimuType(Integer.parseInt(data));
+                        }
+                    }
+                }
+                list.add(goodInfo);
+            }
+        } catch (Exception e) {
+            log.error("excel导入抛出的错误={}", e);
+        }
+        return list;
+    }
+
+    public static List<FoodMenu> excelToFoodMenuInfoList(InputStream inputStream) {
+        List<FoodMenu> list = new ArrayList<>();
+        Workbook workbook = null;
+        try {
+            workbook = WorkbookFactory.create(inputStream);
+            inputStream.close();
+            //工作表对象
+            Sheet sheet = workbook.getSheetAt(0);
+            //总行数
+            int rowLength = sheet.getLastRowNum();
+            //工作表的列
+            Row row = sheet.getRow(0);
+            //总列数
+            int colLength = row.getLastCellNum();
+            //得到指定的单元格
+            Cell cell = row.getCell(0);
+            for (int i = 1; i <= rowLength; i++) {
+                FoodMenu goodInfo = new FoodMenu();
+                row = sheet.getRow(i);
+                for (int j = 0; j < colLength; j++) {
+                    cell = row.getCell(j);
+                    if (cell != null) {
+                        cell.setCellType(Cell.CELL_TYPE_STRING);
+                        String data = cell.getStringCellValue();
+                        data = data.trim();
+                        //列： 0菜品id，1菜品名，2食材id，3食材名称，4耗费食材
+                        if (j == 0) {
+                            //goodInfo.setAdminId(GlobalData.ADMIN_ID);//属于那个商家
+                            goodInfo.setFoodId(Integer.parseInt(data));
+                        } else if (j == 1) {
+                            goodInfo.setFoodName(data);
+                        } else if (j == 2) {
+                            goodInfo.setMatId(Integer.parseInt(data));
+                        } else if (j == 3) {
+                            goodInfo.setMatName(data);
+                        } else if (j == 4) {
+                            goodInfo.setMatCost(Integer.parseInt(data));
                         }
                     }
                 }
